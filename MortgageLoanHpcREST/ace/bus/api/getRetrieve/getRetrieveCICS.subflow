@@ -9,16 +9,16 @@
       <nodes xmi:type="eflow:FCMSource" xmi:id="InTerminal.Input" location="33,146">
         <translation xmi:type="utility:TranslatableString" key="InTerminal.Input" bundleName="ace/bus/api/getRetrieve/getRetrieveCICS" pluginId="MortgageLoanHpcREST"/>
       </nodes>
-      <nodes xmi:type="eflow:FCMSink" xmi:id="OutTerminal.Output" location="1087,150">
+      <nodes xmi:type="eflow:FCMSink" xmi:id="OutTerminal.Output" location="1088,145">
         <translation xmi:type="utility:TranslatableString" key="OutTerminal.Output" bundleName="ace/bus/api/getRetrieve/getRetrieveCICS" pluginId="MortgageLoanHpcREST"/>
       </nodes>
-      <nodes xmi:type="ComIbmTrace.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_1" location="123,146">
+      <nodes xmi:type="ComIbmTrace.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_1" location="123,146" destination="file" filePath="C:\Users\g_dan\OneDrive\Documents\TRAINEE\IBK\logs\MortgageREST\input.log" pattern="==============================&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;INPUT================================&#xD;&#xA;==============================>>>>>>>>>DEBUG-0==============================&#xD;&#xA;&#xD;&#xA;[ExceptionList:${ExceptionList}]&#xD;&#xA;****************************************************************************&#xD;&#xA;[LocalEnvironment:${LocalEnvironment}]&#xD;&#xA;****************************************************************************&#xD;&#xA;[Root:${Root}]&#xD;&#xA;****************************************************************************&#xD;&#xA;[Environment:${Environment}]">
         <translation xmi:type="utility:ConstantString" string="Trace"/>
       </nodes>
       <nodes xmi:type="ComIbmCompute.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_2" location="232,147" computeExpression="esql://routine/ace.bus.api.getRetrieve#getRetrieveCICS_PrepareReq.Main">
         <translation xmi:type="utility:ConstantString" string="PrepareReq"/>
       </nodes>
-      <nodes xmi:type="ComIbmTrace.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_3" location="341,148">
+      <nodes xmi:type="ComIbmTrace.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_3" location="341,148" destination="file" filePath="C:\Users\g_dan\OneDrive\Documents\TRAINEE\IBK\logs\MortgageREST\request.log" pattern="==============================&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;REQUEST==============================&#xD;&#xA;==============================>>>>>>>>>DEBUG-1==============================&#xD;&#xA;&#xD;&#xA;[ExceptionList:${ExceptionList}]&#xD;&#xA;****************************************************************************&#xD;&#xA;[LocalEnvironment:${LocalEnvironment}]&#xD;&#xA;****************************************************************************&#xD;&#xA;[Root:${Root}]&#xD;&#xA;****************************************************************************&#xD;&#xA;[Environment:${Environment}]">
         <translation xmi:type="utility:ConstantString" string="T_Debug1"/>
       </nodes>
       <nodes xmi:type="ComIbmCICSIPICRequest.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_4" location="447,149" cicsServer="{ConfigurationsPOLICY}:Backend_CICS_10s" cicsProgramName="CDSOBCV" cicsCommareaLen="1394" requestTimeoutSecs="10" mirrorTran="ATSE" transactionMode="automatic">
@@ -27,7 +27,7 @@
       <nodes xmi:type="ComIbmTrace.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_5" location="665,148">
         <translation xmi:type="utility:ConstantString" string="T_Debug2"/>
       </nodes>
-      <nodes xmi:type="ComIbmTrace.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_6" location="568,30">
+      <nodes xmi:type="ComIbmTrace.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_6" location="568,30" destination="file" filePath="C:\Users\g_dan\OneDrive\Documents\TRAINEE\IBK\logs\MortgageREST\error1.log" pattern="==============================&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;T_ERROR1=============================&#xD;&#xA;==============================>>>>>>>>>DEBUG-1==============================&#xD;&#xA;&#xD;&#xA;[ExceptionList:${ExceptionList}]&#xD;&#xA;****************************************************************************&#xD;&#xA;[LocalEnvironment:${LocalEnvironment}]&#xD;&#xA;****************************************************************************&#xD;&#xA;[Root:${Root}]&#xD;&#xA;****************************************************************************&#xD;&#xA;[Environment:${Environment}]">
         <translation xmi:type="utility:ConstantString" string="T_Error1"/>
       </nodes>
       <nodes xmi:type="ComIbmCompute.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_7" location="876,145" computeExpression="esql://routine/ace.bus.api.getRetrieve#getRetrieveCICS_PrepareRes.Main">
@@ -36,22 +36,22 @@
       <nodes xmi:type="ComIbmCompute.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_9" location="663,31" computeExpression="esql://routine/ace.bus.api.getRetrieve#getRetrieveCICS_PrepareError.Main">
         <translation xmi:type="utility:ConstantString" string="PrepareError"/>
       </nodes>
-      <nodes xmi:type="ComIbmTrace.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_10" location="763,32">
+      <nodes xmi:type="ComIbmTrace.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_10" location="763,32" destination="file" filePath="C:\Users\g_dan\OneDrive\Documents\TRAINEE\IBK\logs\MortgageREST\error2.log" pattern="==============================&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;T_ERROR2=============================&#xD;&#xA;==============================>>>>>>>>>DEBUG-2==============================&#xD;&#xA;&#xD;&#xA;[ExceptionList:${ExceptionList}]&#xD;&#xA;****************************************************************************&#xD;&#xA;[LocalEnvironment:${LocalEnvironment}]&#xD;&#xA;****************************************************************************&#xD;&#xA;[Root:${Root}]&#xD;&#xA;****************************************************************************&#xD;&#xA;[Environment:${Environment}]">
         <translation xmi:type="utility:ConstantString" string="T_Error2"/>
       </nodes>
       <nodes xmi:type="ComIbmLabel.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_12" location="354,279" labelName="localFlow">
         <translation xmi:type="utility:ConstantString" string="localFlow"/>
       </nodes>
-      <nodes xmi:type="ComIbmTrace.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_13" location="485,279">
+      <nodes xmi:type="ComIbmTrace.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_13" location="485,279" destination="file" filePath="C:\Users\g_dan\OneDrive\Documents\TRAINEE\IBK\logs\MortgageREST\localTrace.log" pattern="==============================&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;LOCAL_TRACE===========================&#xD;&#xA;==============================>>>>>>>>>DEBUG-1==============================&#xD;&#xA;&#xD;&#xA;[ExceptionList:${ExceptionList}]&#xD;&#xA;****************************************************************************&#xD;&#xA;[LocalEnvironment:${LocalEnvironment}]&#xD;&#xA;****************************************************************************&#xD;&#xA;[Root:${Root}]&#xD;&#xA;****************************************************************************&#xD;&#xA;[Environment:${Environment}]">
         <translation xmi:type="utility:ConstantString" string="LocalTrace"/>
       </nodes>
       <nodes xmi:type="ComIbmCompute.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_14" location="643,276" computeExpression="esql://routine/ace.bus.api.getRetrieve#getRetrieveCICS_LocalMockRes.Main">
         <translation xmi:type="utility:ConstantString" string="LocalMockRes"/>
       </nodes>
-      <nodes xmi:type="ComIbmTrace.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_15" location="775,221">
+      <nodes xmi:type="ComIbmTrace.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_15" location="775,221" destination="file" filePath="C:\Users\g_dan\OneDrive\Documents\TRAINEE\IBK\logs\MortgageREST\mockTrace.log" pattern="==============================&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;MOCK_TRACE===========================&#xD;&#xA;==============================>>>>>>>>>DEBUG-2==============================&#xD;&#xA;&#xD;&#xA;[ExceptionList:${ExceptionList}]&#xD;&#xA;****************************************************************************&#xD;&#xA;[LocalEnvironment:${LocalEnvironment}]&#xD;&#xA;****************************************************************************&#xD;&#xA;[Root:${Root}]&#xD;&#xA;****************************************************************************&#xD;&#xA;[Environment:${Environment}]">
         <translation xmi:type="utility:ConstantString" string="MockTrace"/>
       </nodes>
-      <nodes xmi:type="ComIbmTrace.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_16" location="986,149">
+      <nodes xmi:type="ComIbmTrace.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_16" location="981,145" destination="file" filePath="C:\Users\g_dan\OneDrive\Documents\TRAINEE\IBK\logs\MortgageREST\response.log" pattern="==============================&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;RESPONSE=============================&#xD;&#xA;==============================>>>>>>>>>DEBUG-3==============================&#xD;&#xA;&#xD;&#xA;[ExceptionList:${ExceptionList}]&#xD;&#xA;****************************************************************************&#xD;&#xA;[LocalEnvironment:${LocalEnvironment}]&#xD;&#xA;****************************************************************************&#xD;&#xA;[Root:${Root}]&#xD;&#xA;****************************************************************************&#xD;&#xA;[Environment:${Environment}]">
         <translation xmi:type="utility:ConstantString" string="T_Debug3"/>
       </nodes>
       <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_1" targetNode="FCMComposite_1_1" sourceNode="InTerminal.Input" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
@@ -70,6 +70,8 @@
       <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_29" targetNode="FCMComposite_1_7" sourceNode="FCMComposite_1_15" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
       <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_30" targetNode="FCMComposite_1_16" sourceNode="FCMComposite_1_7" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
       <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_31" targetNode="OutTerminal.Output" sourceNode="FCMComposite_1_16" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_2" targetNode="FCMComposite_1_6" sourceNode="FCMComposite_1_4" sourceTerminalName="OutTerminal.failure" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_4" targetNode="FCMComposite_1_6" sourceNode="FCMComposite_1_4" sourceTerminalName="OutTerminal.timeout" targetTerminalName="InTerminal.in"/>
     </composition>
     <propertyOrganizer/>
     <stickyBoard/>

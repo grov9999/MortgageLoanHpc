@@ -1,25 +1,42 @@
 BROKER SCHEMA ace.bus.api.getRetrieve
+PATH ace.bus.api.getRetrieve, pe.ibk.common;
 
+CREATE PROCEDURE prepareDataRequestCICS(IN refOut REFERENCE,IN refEnv REFERENCE,In refParameters REFERENCE,IN refBodyIn REFERENCE)
+BEGIN
+	
+	DECLARE isBSEOJIN CHARACTER getParmSecSrv(refEnv,'BSEOJIN');
+	
+	IF isBSEOJIN = 'S' THEN
+		CALL prepareHeaderBSEOJINT(refOut,refEnv,C_NS,refParameters,C_POS_COD_RESP,C_LONG_COD_RESP);
+		CREATE FIELD refOut.{C_NS}:MESSAGEHOST.BODY AS refOut;
+	ELSE
+		CALL prepareHeaderBSE(refOut,refParameters);
+		CREATE FIELD refOut.{C_MESSAGE_TYPE} AS refOut;
+	END IF;
+	--Configurar la data del input request
+	CALL prepareDataCICS(refEnv,refOut,refBodyIn,refParameters);
+END;
 
-CREATE COMPUTE MODULE libFunctionsgetRetrieve
-	CREATE FUNCTION Main() RETURNS BOOLEAN
-	BEGIN
-		-- CALL CopyMessageHeaders();
-		-- CALL CopyEntireMessage();
-		RETURN TRUE;
-	END;
+CREATE PROCEDURE prepareDataCICS(IN refEnv REFERENCE,IN refOut REFERENCE,IN refBody REFERENCE,IN refParameters REFERENCE)
+BEGIN
+--	CREATE FIELD refOut.PH_OPERACION;
+--	DECLARE refBodyOpe REFERENCE TO refOut.PH_OPERACION;
+	SET refOut.PH_OPERACION = ADICIONA;
+	
+	CREATE FIELD refOut.REG_INPUT_PENDIENTE;
+	DECLARE refBodyOut REFERENCE TO refOut.REG_INPUT_PENDIENTE;
+	
+	SET refBodyOut.PH_COD_RUBRO		= FormatAlignCadena(refBody.categoryCode,2,0,'DER');
+	SET refBodyOut.PH_COD_EMPRESA	= FormatAlignCadena(refBody.organizationId,3,0,'DER');
+	SET refBodyOut.PH_COD_SERVICIO	= FormatAlignCadena(refBody.serviceId,2,0,'DER');
+	SET refBodyOut.PH_COD_DEUDOR	= FormatAlignCadena(refBody.afillationNumber,20,' ','IZQ');
+	SET refBodyOut.PH_NOM_DEUDOR	= FormatAlignCadena(' ',40,' ','IZQ');
+	SET refBodyOut.PH_COD_CUOTA		= FormatAlignCadena(refBody.installmentsCode,8,' ','IZQ');
+	SET refBodyOut.PH_DESCRIP_CUOTA = FormatAlignCadena(' ',20,' ','IZQ');
+	SET refBodyOut.PH_MON_APAGAR	= FormatAlignCadena(' ',3,' ','IZQ');
+	SET refBodyOut.PH_IMP_APAGAR	= FormatAlignCadena(' ',15,0,'DER');
+	SET refBodyOut.PH_FEC_VCMTO		= FormatAlignCadena(' ',8,' ','IZQ');
+	SET refBodyOut.PH_TIP_DCMTO		= FormatAlignCadena(' ',2,' ','IZQ');
+	SET refBodyOut.PH_NRO_DCMTO		= FormatAlignCadena(' ',13,' ','IZQ');
+END;
 
-	CREATE PROCEDURE CopyMessageHeaders() BEGIN
-		DECLARE I INTEGER 1;
-		DECLARE J INTEGER;
-		SET J = CARDINALITY(InputRoot.*[]);
-		WHILE I < J DO
-			SET OutputRoot.*[I] = InputRoot.*[I];
-			SET I = I + 1;
-		END WHILE;
-	END;
-
-	CREATE PROCEDURE CopyEntireMessage() BEGIN
-		SET OutputRoot = InputRoot;
-	END;
-END MODULE;
