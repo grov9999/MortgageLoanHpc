@@ -3,8 +3,24 @@
   "info" : {
     "title" : "MortgageLoanHpcREST",
     "version" : "1.0.0",
-    "description" : "MortgageLoanHpcREST"
+    "description" : "Consulta cuotas de crédito hipotecario"
   },
-  "paths" : { },
+  "paths" : {
+    "/installments/retrieve" : {
+      "get" : {
+        "operationId" : "getRetrieve",
+        "responses" : {
+          "200" : {
+            "description" : "The operation was successful.",
+            "schema" : {
+              "type" : "string"
+            }
+          }
+        },
+        "produces" : [ "application/json" ],
+        "description" : "Retrieve retrieve"
+      }
+    }
+  },
   "basePath" : "/mortgage-loan/v1"
 }
