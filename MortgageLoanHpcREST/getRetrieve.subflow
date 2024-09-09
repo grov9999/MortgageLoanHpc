@@ -15,7 +15,7 @@
       <nodes xmi:type="ComIbmTrace.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_1" location="265,229">
         <translation xmi:type="utility:ConstantString" string="T_Debug1"/>
       </nodes>
-      <nodes xmi:type="pe_ibk_control_getControlInitial.subflow:FCMComposite_1" xmi:id="FCMComposite_1_2" location="147,229">
+      <nodes xmi:type="pe_ibk_control_getControlInitial.subflow:FCMComposite_1" xmi:id="FCMComposite_1_2" location="147,229" RedactPolicyName="{MortgageLoanHpcPOLICY}:configAudit" RedactPolicyProperty="getRetrieve" ConfigPolicyName="{MortgageLoanHpcPOLICY}:configProperties" ConfigPolicyProperty="getRetrieve">
         <translation xmi:type="utility:ConstantString" string="getControlInitial"/>
       </nodes>
       <nodes xmi:type="ace_bus_api_getRetrieve_getRetrieveCICS.subflow:FCMComposite_1" xmi:id="FCMComposite_1_3" location="364,229">
