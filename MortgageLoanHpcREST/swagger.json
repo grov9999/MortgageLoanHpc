@@ -18,7 +18,83 @@
           }
         },
         "produces" : [ "application/json" ],
-        "description" : "Retrieve retrieve"
+        "description" : "Retrieve retrieve",
+        "parameters" : [ {
+          "name" : "userId",
+          "in" : "header",
+          "type" : "string",
+          "description" : "Identificador del usuario que realizó la transacción"
+        }, {
+          "name" : "branchId",
+          "in" : "header",
+          "type" : "string",
+          "description" : "Código de la sucursal donde se realizó la transacción"
+        }, {
+          "name" : "funcionalidad",
+          "in" : "header",
+          "type" : "string"
+        }, {
+          "name" : "netId",
+          "in" : "header",
+          "type" : "string",
+          "description" : "Identificador de la red a la que pertenece el usuario"
+        }, {
+          "name" : "channelId",
+          "in" : "header",
+          "type" : "string",
+          "description" : "Código del canal donde se generó la transacción"
+        }, {
+          "name" : "timeStamp",
+          "in" : "header",
+          "type" : "string",
+          "description" : "Fecha y hora de la transacción"
+        }, {
+          "name" : "serviceId",
+          "in" : "header",
+          "type" : "string",
+          "description" : "Identificador del servicio invocado"
+        }, {
+          "name" : "consumerId",
+          "in" : "header",
+          "type" : "string",
+          "description" : "Identificador de la aplicación donde se originó la transacción"
+        }, {
+          "name" : "traceId",
+          "in" : "header",
+          "type" : "string"
+        }, {
+          "name" : "ipOrigen",
+          "in" : "header",
+          "type" : "string"
+        }, {
+          "name" : "cardIdType",
+          "in" : "header",
+          "type" : "string"
+        }, {
+          "name" : "supervisorId",
+          "in" : "header",
+          "type" : "string",
+          "description" : "Identificador del usuario supervisor que autoriza la transacción"
+        }, {
+          "name" : "deviceId",
+          "in" : "header",
+          "type" : "string",
+          "description" : "Identificador del dispositivo donde se generó la transacción"
+        }, {
+          "name" : "messageId",
+          "in" : "header",
+          "type" : "string",
+          "description" : "Identificador único de la transacción del consumidor"
+        }, {
+          "name" : "countryCode",
+          "in" : "header",
+          "type" : "string",
+          "description" : "Código del pais donde se originó la transacción"
+        }, {
+          "name" : "parentId",
+          "in" : "header",
+          "type" : "string"
+        } ]
       }
     }
   },
