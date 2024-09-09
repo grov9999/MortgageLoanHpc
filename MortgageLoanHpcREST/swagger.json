@@ -1,0 +1,10 @@
+{
+  "swagger" : "2.0",
+  "info" : {
+    "title" : "MortgageLoanHpcREST",
+    "version" : "1.0.0",
+    "description" : "MortgageLoanHpcREST"
+  },
+  "paths" : { },
+  "basePath" : "/mortgage-loan/v1"
+}
