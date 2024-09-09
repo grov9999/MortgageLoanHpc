@@ -10,4 +10,4 @@ DECLARE C_LNG_MSG_RESP CONSTANT INTEGER '';
 DECLARE C_IND_MSG_RESP CONSTANT INTEGER '';
 
 DECLARE C_MESSAGE_TYPE CONSTANT CHARACTER '';
-DECLARE C_NS NAMESPACE 'http://interbank.com.pe/api/mortgege-loan/v1/installments/retrieve';
+DECLARE C_NS NAMESPACE 'http://interbank.com.pe/api/mortgage-loan/v1/installments/retrieve';
