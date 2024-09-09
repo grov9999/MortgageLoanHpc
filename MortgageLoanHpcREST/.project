@@ -3,6 +3,9 @@
 	<name>MortgageLoanHpcREST</name>
 	<comment></comment>
 	<projects>
+		<project>MortgageLoanHpcLIB</project>
+		<project>common-core-library</project>
+		<project>control-core-library</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>
