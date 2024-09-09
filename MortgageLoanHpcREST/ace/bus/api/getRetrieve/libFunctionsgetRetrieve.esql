@@ -26,15 +26,15 @@ BEGIN
 	CREATE FIELD refOut.REG_INPUT_PENDIENTE;
 	DECLARE refBodyOut REFERENCE TO refOut.REG_INPUT_PENDIENTE;
 	
-	SET refBodyOut.PH_COD_RUBRO		= FormatAlignCadena(refBody.categoryCode,2,0,'DER');
-	SET refBodyOut.PH_COD_EMPRESA	= FormatAlignCadena(refBody.organizationId,3,0,'DER');
-	SET refBodyOut.PH_COD_SERVICIO	= FormatAlignCadena(refBody.serviceId,2,0,'DER');
-	SET refBodyOut.PH_COD_DEUDOR	= FormatAlignCadena(refBody.afillationNumber,20,' ','IZQ');
+	SET refBodyOut.PH_COD_RUBRO		= FormatAlignCadena('11',2,'0','DER');
+	SET refBodyOut.PH_COD_EMPRESA	= FormatAlignCadena('222',3,'0','DER');
+	SET refBodyOut.PH_COD_SERVICIO	= FormatAlignCadena('333',2,'0','DER');
+	SET refBodyOut.PH_COD_DEUDOR	= FormatAlignCadena('affiliationNumber',20,' ','IZQ');
 	SET refBodyOut.PH_NOM_DEUDOR	= FormatAlignCadena(' ',40,' ','IZQ');
-	SET refBodyOut.PH_COD_CUOTA		= FormatAlignCadena(refBody.installmentsCode,8,' ','IZQ');
+	SET refBodyOut.PH_COD_CUOTA		= FormatAlignCadena('install',8,' ','IZQ');
 	SET refBodyOut.PH_DESCRIP_CUOTA = FormatAlignCadena(' ',20,' ','IZQ');
 	SET refBodyOut.PH_MON_APAGAR	= FormatAlignCadena(' ',3,' ','IZQ');
-	SET refBodyOut.PH_IMP_APAGAR	= FormatAlignCadena(' ',15,0,'DER');
+	SET refBodyOut.PH_IMP_APAGAR	= FormatAlignCadena('1234567890123',13,'0','DER');
 	SET refBodyOut.PH_FEC_VCMTO		= FormatAlignCadena(' ',8,' ','IZQ');
 	SET refBodyOut.PH_TIP_DCMTO		= FormatAlignCadena(' ',2,' ','IZQ');
 	SET refBodyOut.PH_NRO_DCMTO		= FormatAlignCadena(' ',13,' ','IZQ');
