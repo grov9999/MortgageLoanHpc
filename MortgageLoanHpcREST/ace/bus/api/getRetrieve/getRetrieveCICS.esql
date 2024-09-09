@@ -39,6 +39,30 @@ END MODULE;
 CREATE COMPUTE MODULE getRetrieveCICS_PrepareRes
 	CREATE FUNCTION Main() RETURNS BOOLEAN
 	BEGIN
+		
+		CALL setMonitoringResponseTime(Environment);
+		
+		DECLARE chrTramaOut CHARACTER;
+		SET chrTramaOut = CAST(InputRoot.BLOB.BLOB AS CHARACTER CCSID InputRoot.Properties.CodedCharSetId);
+		SET Environment.DATOS = chrTramaOut;
+		
+		DECLARE chrCodRes CHARACTER SUBSTRING(chrTramaOut FROM C_IND_COD_RESP FOR C_LNG_COD_RESP);
+		DECLARE chrCodMsg CHARACTER SUBSTRING(chrTramaOut FROM C_IND_MSG_RESP FOR C_LNG_MSG_RESP);
+		DECLARE responseType INTEGER COALESCE(Environment.StatusRes.status.responseType,-1);
+		SET Environment.COD = chrCodRes;
+		
+		IF chrCodRes = C_CICS_OK_RESP OR responseType = 0 THEN
+			CALL createResponseStatus(Environment,NULL,0,'EJECUCION CON ÉXITO',chrCodRes,chrCodMsg);
+			CALL createHeaderBus(OutputRoot,Environment);
+			CALL parsingTramaCICS(InputRoot,Environment,C_NS);
+			CALL prepareResponseJSON(OutputRoot,Environment);
+		ELSE
+			CALL createHeaderErrorCICS(OutputRoot,Environment,OutputLocalEnvironment,chrCodRes,4,chrCodMsg);
+		END IF;
+		
+		--Audit response and reply data
+		CALL setMonitoringEndTime(Environment);
+		CALL getResponseDataAudit(Environment,OutputRoot,OutputLocalEnvironment,'5');
 	END;
 END MODULE;
 
@@ -53,6 +77,38 @@ END MODULE;
 CREATE COMPUTE MODULE getRetrieveCICS_LocalMockRes
 	CREATE FUNCTION Main() RETURNS BOOLEAN
 	BEGIN
+		
+		DECLARE refParameters REFERENCE TO InputLocalEnvironment.REST.Input.Parameters;
+		DECLARE refInput REFERENCE TO InputRoot.DFDL;
+		DECLARE refEnv REFERENCE TO Environment;
+		DECLARE refEnvAudit REFERENCE TO refEnv.Audit;
+		
+		DECLARE refMessageIn REFERENCE TO refInput.{C_NS}:MESSAGEHOST;
+		CREATE FIELD refMessageIn.BODY.REG_OUTPUT_PENDIENTE;
+		DECLARE refDfdlBody REFERENCE TO refMessageIn.BODY.REG_OUTPUT_PENDIENTE;
+		
+		SET refDfdlBody.PH_COD_RETORNO = '00';
+		SET refDfdlBody.PH_COD_RETORNO_TOLD = '00';
+		SET refDfdlBody.PH_MENSAJE = 'mensaje';
+		SET refDfdlBody.PH_NUM_CUOTAS = '123';
+--		SET refDfdlBody.PH_OUTPUT_PEND.PH.OUT_COD_CUOTA = '';
+--		SET refDfdlBody.PH_OUTPUT_PEND.PH.OUT_MON_APAGAR = '';
+--		SET refDfdlBody.PH_OUTPUT_PEND.PH.OUT_IMP_APAGAR = '';
+--		SET refDfdlBody.PH_OUTPUT_PEND.PH.OUT_FLAG_PAGADO = '';
+--		SET refDfdlBody.PH_OUTPUT_PEND.PH.OUT_FEC_PAGO = '';
+--		SET refDfdlBody.PH_OUTPUT_PEND.PH.OUT_OFI_PAGO = '';
+		
+		SET refEnv.MOCK.PH_NUM_CUOTAS = refDfdlBody.PH_NUM_CUOTAS;
+		
+		CREATE LASTCHILD OF OutputRoot DOMAIN 'BLOB';
+		CREATE FIELD OutputRoot.BLOB.BLOB;
+		CREATE FIELD OutputRoot.Properties.CodedCharSetId;
+		SET OutputRoot.Properties = InputProperties;
+		DECLARE tramaInput CHARACTER '';
+		SET tramaInput = CAST(ASBITSTREAM(refInput CCSID getCCSID_HOST() ENCODING getENCODING_HOST()) AS CHARACTER CCSID getCCSID_HOST() ENCODING getENCODING_HOST());
+		SET OutputRoot.BLOB.BLOB = CAST(tramaInput AS BLOB CCSID OutputRoot.Properties.CodedCharSetId);
+		
+		RETURN TRUE;
 	END;
 END MODULE;
  
